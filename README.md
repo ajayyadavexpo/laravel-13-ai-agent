@@ -1,58 +1,353 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Laravel 13 AI Agent with Gemini API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A complete Laravel 13 AI Agent project using Gemini API, Laravel AI SDK, Tools, Memory, Streaming Chat, Product Search, and Docker setup.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Laravel 13 AI SDK
+- Gemini API Integration
+- AI Agent with Tools
+- Product Search from Database
+- Conversation Memory
+- Streaming Chat
+- Follow-up Question Memory Fix
+- Docker Support
+- MySQL Database
+- Nginx Setup
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠 Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Laravel 13
+- PHP
+- MySQL
+- Laravel AI SDK
+- Gemini API
+- Docker
+- Docker Compose
+- Nginx
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 📦 Installation
 
-## Agentic Development
+You can run this project in two ways:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. Using Docker
+2. Manual Laravel setup
+
+---
+
+# 🐳 Run with Docker
+
+## 1. Clone the Repository
 
 ```bash
-composer require laravel/boost --dev
+git clone https://github.com/ajayyadavexpo/laravel-13-ai-agent.git
+cd your-repository
+````
 
-php artisan boost:install
+## 2. Setup Environment File
+
+```bash
+cp .env.docker .env
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Update your Gemini API key inside `.env`:
 
-## Contributing
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 3. Start Docker Containers
 
-## Code of Conduct
+```bash
+docker-compose up -d
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 4. Run Migrations and Seeders
 
-## Security Vulnerabilities
+```bash
+docker-compose exec app php artisan migrate --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 5. Generate App Key
 
-## License
+```bash
+docker-compose exec app php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 6. Clear Config Cache
+
+```bash
+docker-compose exec app php artisan config:clear
+```
+
+---
+
+# ⚙️ Useful Docker Commands
+
+## Stop Containers
+
+```bash
+docker-compose down
+```
+
+## Rebuild Containers
+
+```bash
+docker-compose up -d --build
+```
+
+## View Logs
+
+```bash
+docker-compose logs -f
+```
+
+## Enter App Container
+
+```bash
+docker-compose exec app bash
+```
+
+## Run Artisan Command
+
+```bash
+docker-compose exec app php artisan
+```
+
+---
+
+# 🧑‍💻 Manual Setup
+
+## 1. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+## 2. Setup Environment
+
+```bash
+cp .env.example .env
+```
+
+Add your Gemini API key:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+## 3. Generate App Key
+
+```bash
+php artisan key:generate
+```
+
+## 4. Run Migrations and Seeders
+
+```bash
+php artisan migrate --seed
+```
+
+## 5. Start Laravel Server
+
+```bash
+php artisan serve
+```
+
+---
+
+# 🤖 AI Agent
+
+This project includes a Product AI Agent that can understand user queries and search products from the database.
+
+Example prompts:
+
+```txt
+Show me laptops
+```
+
+```txt
+Show phones under 50000
+```
+
+```txt
+Which one is cheapest?
+```
+
+---
+
+# 🔧 AI Tool
+
+The project includes a `SearchProducts` tool.
+
+The tool can:
+
+* Search products by name
+* Search by category
+* Filter by price
+* Check stock
+* Return real database results
+
+---
+
+# 🧠 Conversation Memory
+
+The AI Agent remembers previous conversation context.
+
+Example:
+
+User:
+
+```txt
+Show me laptops
+```
+
+Agent returns laptop products.
+
+User:
+
+```txt
+Which one is cheapest?
+```
+
+Agent understands the previous laptop list and returns the cheapest laptop.
+
+---
+
+# ⚡ Streaming Chat
+
+This project supports real-time streaming chat responses, giving a ChatGPT-like experience inside Laravel.
+
+---
+
+# 🛑 Streaming Memory Fix
+
+In streaming chat, follow-up questions can lose context if the conversation ID is not reused.
+
+This project fixes that by:
+
+* Storing conversation ID in session
+* Reusing previous conversation
+* Continuing the same AI conversation
+* Preserving context for follow-up questions
+
+---
+
+# 📁 Project Structure
+
+```txt
+app/
+ ├── Ai/
+ │   ├── Agents/
+ │   │   └── ProductAgent.php
+ │   └── Tools/
+ │       └── SearchProducts.php
+ │
+ ├── Models/
+ │   └── Product.php
+
+database/
+ ├── migrations/
+ └── seeders/
+
+nginx/
+Dockerfile
+docker-compose.yml
+docker-entrypoint.sh
+.env.docker
+```
+
+---
+
+# 🎥 YouTube Tutorial
+
+A complete Hindi tutorial is available for this project.
+
+Video includes:
+
+* Laravel 13 AI SDK setup
+* Gemini API setup
+* AI Agent creation
+* Tool creation
+* Product search
+* Conversation memory
+* Streaming chat
+* Docker setup
+
+Add your video link here:
+
+```txt
+https://youtu.be/guw7_jNN4VA
+```
+
+---
+
+# 🚀 Real Use Cases
+
+You can use this project as a base for:
+
+* E-commerce AI Assistant
+* Product Recommendation Bot
+* Customer Support AI
+* Inventory Assistant
+* CRM AI Agent
+* Order Tracking Bot
+* Admin Dashboard AI
+
+---
+
+# 📌 Common Commands
+
+```bash
+docker-compose up -d
+```
+
+```bash
+docker-compose exec app php artisan migrate --seed
+```
+
+```bash
+docker-compose exec app php artisan config:clear
+```
+
+```bash
+docker-compose down
+```
+
+---
+
+# 🤝 Contributing
+
+Pull requests are welcome.
+
+If you want to improve this project, fork the repository and submit a pull request.
+
+---
+
+# ⭐ Support
+
+If this project helped you:
+
+* Star this repository
+* Like the YouTube video
+* Subscribe to the channel
+
+---
+
+# 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+# 🙌 Credits
+
+Built with ❤️ using Laravel 13, Laravel AI SDK, Gemini API, and Docker.
+
+```
